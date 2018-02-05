@@ -46,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void MoveForward()
     {
-        rb.MovePosition((transform.position + transform.forward * moveSpeed * Time.deltaTime));
+        rb.MovePosition(Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime));
     }
 
     protected virtual void LookAt(Vector3 lookTarget)

@@ -328,6 +328,16 @@ Prefab:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 54567484657103378, guid: 8741851a423de411c91c847451bb610b,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54567484657103378, guid: 8741851a423de411c91c847451bb610b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8741851a423de411c91c847451bb610b, type: 2}
   m_IsPrefabParent: 0
@@ -595,6 +605,10 @@ Prefab:
         type: 2}
       propertyPath: vision
       value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256590486650930, guid: 8fdfb3006c72c405a9e308606b44be00, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114790594039892868, guid: 8fdfb3006c72c405a9e308606b44be00, type: 2}
