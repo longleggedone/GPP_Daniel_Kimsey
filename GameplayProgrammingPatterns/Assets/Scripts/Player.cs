@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	PlayerController controller; //the player controller
 	WeaponController weaponController;
 
+    public AudioClip deathAudio;
+
 	Camera mainCam; //the primary view camera
 
 	// Use this for initialization
@@ -45,4 +47,13 @@ public class Player : MonoBehaviour {
 		}
 
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
+            Destroy(gameObject);
+        }
+    }
 }

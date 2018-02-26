@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class EnemyDuck : Enemy {
 
+    public float speedIncrease = 1;
+   
+
     protected override void Start()
     {
         base.Start();
+        EventManager.Instance.Register<EnemyDeathEvent>(IncreaseSpeed);
+
+
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
     }
 
-    protected override void Movement()
-    {
-        StartCoroutine(RotateTowardForSeconds(waitTime));
-
-        //StartCoroutine(MoveForwardForSeconds(runTime));
-    }
-
-   
+ 
 
     protected override void Hit()
     {
-
+        base.Hit();
     }
 
     protected override void Death()
     {
+        base.Death();
+    }
 
+    void IncreaseSpeed(Event e)
+    {
+        moveSpeed += speedIncrease;
     }
 
 }

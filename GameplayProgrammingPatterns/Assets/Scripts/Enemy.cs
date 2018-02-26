@@ -9,90 +9,108 @@ public abstract class Enemy : MonoBehaviour
 
     public Transform target;
 
-    protected Rigidbody rb;
+    //protected Rigidbody rb;
 
-    public int moveSpeed;
-    public int rotateSpeed;
-    public int runTime;
-    public int waitTime;
+
+    AudioSource audioSource;
+    public AudioClip spawnAudio;
+    public AudioClip deathAudio;
+
+    public int hp = 1;
+    public bool Dead
+    {
+        get; private set;
+    } 
+        
+    public float moveSpeed = 1;
+    public float rotateSpeed = 1; 
+    public int runTime = 1;
+    public int waitTime = 1;
     public float vision = 0.8f;
 
 
-	protected virtual void Start () 
+    protected virtual void Awake ()
     {
-        target = GameObject.Find("Player").GetComponent<Transform>();
-        rb = GetComponent<Rigidbody>();
+        Dead = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
-	protected virtual void Update () 
+	protected virtual void Start () 
     {
-        Movement();
+        audioSource.PlayOneShot(spawnAudio);
+        target = GameObject.Find("Player").GetComponent<Transform>();
+        //rb = GetComponent<Rigidbody>();
+    }
+
+	protected virtual void FixedUpdate () 
+    {
+        MovementBehaviour();
 
 	}
-
 
 
     /// 
     /// MOVEMENT
     /// 
-
-
-    protected virtual void Movement()
+    protected virtual void MovementBehaviour()
     {
-        LookAt(target.position);
-        MoveForward();
+        if (target != null)
+        {
+            MoveForward();
+
+            LookAt(target.position);
+        }
     }
 
 
     protected virtual void MoveForward()
     {
-        rb.MovePosition(Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime));
+        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
+        //rb.MovePosition(Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime));
     }
 
     protected virtual void LookAt(Vector3 lookTarget)
     {
-        if (target != null)
-        {
+        Vector3 lookPoint = new Vector3(lookTarget.x, transform.position.y, lookTarget.z);
+        Vector3 direction = lookPoint - transform.position;
+        //Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Vector3 targetRotation = Vector3.RotateTowards(transform.forward, direction, rotateSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(targetRotation);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
 
-
-            Vector3 lookPoint = new Vector3(lookTarget.x, transform.position.y, lookTarget.z);
-            Vector3 relativePos = Vector3.Normalize(lookPoint - transform.position);
-            Quaternion targetRotation = Quaternion.LookRotation(relativePos);
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-
-
-            //Vector3 myHeightPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z); //corrects so that point is considered to be at the same height as the enemy
-            //transform.LookAt(myHeightPoint);
-
-        }
+            
     }
 
     protected IEnumerator MoveForwardForSeconds(float seconds)
     {
-        
-        float timer = 0;
-        while (timer < seconds)
+        if (target != null)
         {
-           // Debug.Log("Moving forward");
-            MoveForward();
-            timer += Time.deltaTime;
-            yield return null;
+            float timer = 0;
+            while (timer < seconds)
+            {
+                // Debug.Log("Moving forward");
+                MoveForward();
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            yield return StartCoroutine(RotateTowardForSeconds(waitTime));
         }
-        StartCoroutine(RotateTowardForSeconds(waitTime));
     }
 
     protected IEnumerator RotateTowardForSeconds(float seconds)
     {
-        float timer = 0;
-        while (timer < seconds )
+        if (target != null)
         {
-           // Debug.Log("Rotating towards target"); 
-            LookAt(target.position);
-            timer += Time.deltaTime;
-            yield return null;
+            float timer = 0;
+            while (timer < seconds)
+            {
+                // Debug.Log("Rotating towards target"); 
+                LookAt(target.position);
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            yield return StartCoroutine(MoveForwardForSeconds(runTime));
         }
-        StartCoroutine(MoveForwardForSeconds(runTime));
     }
 
 
@@ -110,14 +128,32 @@ public abstract class Enemy : MonoBehaviour
     /// DAMAGE AND DEATH
     /// 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "projectile")
+        {
+            Hit();
+        }
+    }
+
     protected virtual void Hit()
     {
+        hp -= 1;
 
+        if(hp <= 0)
+        {
+            Death();
+        }
     }
 
     protected virtual void Death()
     {
+        Dead = true;
+        EventManager.Instance.FireEvent(new EnemyDeathEvent(this));
+        SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
 
+        //Destroy(gameObject);
     }
+
 }
 

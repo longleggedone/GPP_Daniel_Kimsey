@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChicken : Enemy {
+public class EnemySheep : Enemy {
 
-   protected override void Start()
+    protected override void Start()
     {
         base.Start();
+        StartCoroutine(RotateTowardForSeconds(waitTime));
+
     }
 
-    protected override void FixedUpdate(){
+    protected override void FixedUpdate()
+    {
 
-        base.FixedUpdate();
     }
 
- 
+
 
     protected override void Hit()
     {
@@ -27,3 +29,5 @@ public class EnemyChicken : Enemy {
     }
 
 }
+
+

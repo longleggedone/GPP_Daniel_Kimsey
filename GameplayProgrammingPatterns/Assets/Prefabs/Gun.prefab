@@ -139,5 +139,5 @@ MonoBehaviour:
   firePoint: {fileID: 4505756537257400}
   projectile: {fileID: 114689663728144694, guid: 41b9b52d727d74a6ab31336b9d58968b,
     type: 2}
-  fireInterval: 100
-  projVelocity: 5
+  fireInterval: 200
+  projVelocity: 3

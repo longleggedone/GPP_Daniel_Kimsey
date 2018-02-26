@@ -23,4 +23,9 @@ public class Projectile : MonoBehaviour
     {
 		speed = newSpeed;
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
