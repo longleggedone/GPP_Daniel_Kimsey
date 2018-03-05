@@ -20,8 +20,12 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+       
+    }
 
-   
+
     public void GenerateSourceAndPlay(AudioClip clip, float volume, float pitch, Vector3 position)
 
     {

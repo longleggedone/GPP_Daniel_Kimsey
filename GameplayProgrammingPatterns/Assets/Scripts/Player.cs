@@ -52,8 +52,8 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.tag == "enemy")
         {
-            SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
-            Destroy(gameObject);
+            //SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
+            Destroy(this.gameObject);
         }
     }
 }

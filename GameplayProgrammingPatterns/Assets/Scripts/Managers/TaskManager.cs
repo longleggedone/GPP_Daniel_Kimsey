@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskManager : MonoBehaviour {
+public class TaskManager {
 
     private readonly List<Task> _tasks = new List<Task>();
 

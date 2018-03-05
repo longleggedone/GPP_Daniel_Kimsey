@@ -150,7 +150,7 @@ public abstract class Enemy : MonoBehaviour
     {
         Dead = true;
         EventManager.Instance.FireEvent(new EnemyDeathEvent(this));
-        SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
+        //SoundManager.Instance.GenerateSourceAndPlay(deathAudio, 1f, 1f, transform.position);
 
         //Destroy(gameObject);
     }

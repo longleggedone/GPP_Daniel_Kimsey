@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: PrefabDB
+  m_EditorClassIdentifier: Assembly-CSharp::PrefabDB
+  genericAudioSource: {fileID: 1026414268435068, guid: 9681e23d3673b41ba94403e88d5a6c99,
+    type: 2}
+  chicken: {fileID: 1505755153879936, guid: 8741851a423de411c91c847451bb610b, type: 2}
+  duck: {fileID: 1256590486650930, guid: 8fdfb3006c72c405a9e308606b44be00, type: 2}
+  sheep: {fileID: 1128571309721214, guid: 609fe6977e43a4d7ba0e0c37e3f195c2, type: 2}

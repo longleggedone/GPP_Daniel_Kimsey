@@ -97,7 +97,7 @@ public class EnemyManager : MonoBehaviour
             {
                 Destroy(enemiesInCurrentWave[i].gameObject);
                 enemiesInCurrentWave.Remove(enemiesInCurrentWave[i]);
-                Debug.Log(enemiesInCurrentWave.Count);
+               // Debug.Log(enemiesInCurrentWave.Count);
             }
         }
     }

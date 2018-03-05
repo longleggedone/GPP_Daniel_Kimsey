@@ -3,37 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Task : MonoBehaviour {
+public class Task {
 
     // An enum representing the current state of the task 
     public enum TaskStatus : byte 
-{     
-    Detached, // Task has not been attached to a TaskManager     
-    Pending, // Task has not been initialized     
-    Working, // Task has been initialized     
-    Success, // Task completed successfully     
-    Fail, // Task completed unsuccessfully     
-    Aborted // Task was aborted 
-}
+    {     
+        Detached, // Task has not been attached to a TaskManager     
+        Pending, // Task has not been initialized     
+        Working, // Task has been initialized     
+        Success, // Task completed successfully     
+        Fail, // Task completed unsuccessfully     
+        Aborted // Task was aborted 
+    }
 
-// The only member variable that a base task has is its status 
-    public TaskStatus Status { get; private set; }  
+    // The only member variable that a base task has is its status 
+        public TaskStatus Status { get; private set; }  
 
-// Convenience status checking 
-public bool IsDetached { get { return Status == TaskStatus.Detached; } }
-public bool IsAttached { get { return Status != TaskStatus.Detached; } }
-public bool IsPending { get { return Status == TaskStatus.Pending; } }
-public bool IsWorking { get { return Status == TaskStatus.Working; } }
-public bool IsSuccessful { get { return Status == TaskStatus.Success; } }
-public bool IsFailed { get { return Status == TaskStatus.Fail; } }
-public bool IsAborted { get { return Status == TaskStatus.Aborted; } }
-public bool IsFinished { get { return (Status == TaskStatus.Fail || Status == TaskStatus.Success || Status == TaskStatus.Aborted); } }
+    // Convenience status checking 
+    public bool IsDetached { get { return Status == TaskStatus.Detached; } }
+    public bool IsAttached { get { return Status != TaskStatus.Detached; } }
+    public bool IsPending { get { return Status == TaskStatus.Pending; } }
+    public bool IsWorking { get { return Status == TaskStatus.Working; } }
+    public bool IsSuccessful { get { return Status == TaskStatus.Success; } }
+    public bool IsFailed { get { return Status == TaskStatus.Fail; } }
+    public bool IsAborted { get { return Status == TaskStatus.Aborted; } }
+    public bool IsFinished { get { return (Status == TaskStatus.Fail || Status == TaskStatus.Success || Status == TaskStatus.Aborted); } }
 
-// Convenience method for external classes to abort the task 
-public void Abort()
-{
-    SetStatus(TaskStatus.Aborted);
-}
+    // Convenience method for external classes to abort the task 
+    public void Abort()
+    {
+        SetStatus(TaskStatus.Aborted);
+    }
     // A method for changing the status of the task 
     internal void SetStatus(TaskStatus newStatus)
     {
