@@ -20,9 +20,13 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
+
    
     public void GenerateSourceAndPlay(AudioClip clip, float volume, float pitch, Vector3 position)
+
     {
+        Debug.Log(genericAudioSource);
+      
         GameObject specialAudioSource = Instantiate(genericAudioSource);
         AudioSource source = specialAudioSource.GetComponent<AudioSource>();
         specialAudioSource.transform.position = position;
