@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65726571171500752}
   - component: {fileID: 114943522954904628}
   - component: {fileID: 82740167968418342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySheep
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33425095318578538}
   - component: {fileID: 23180778690070952}
   - component: {fileID: 95801929145791058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SheepWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,8 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  genericAudioSource: {fileID: 1026414268435068, guid: 9681e23d3673b41ba94403e88d5a6c99,
-    type: 2}
   spawnAudio: {fileID: 8300000, guid: 0d1a3180001c64beabb141730dc18714, type: 3}
   deathAudio: {fileID: 8300000, guid: 63f4e10ff3e144307b7a2d6531e04e08, type: 3}
   hp: 3

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54482337144777154}
   - component: {fileID: 114458168760951608}
   - component: {fileID: 82458471944062952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyDuck
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33612527393710114}
   - component: {fileID: 23050070135063170}
   - component: {fileID: 95449205629581944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DuckWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,8 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  genericAudioSource: {fileID: 1026414268435068, guid: 9681e23d3673b41ba94403e88d5a6c99,
-    type: 2}
   spawnAudio: {fileID: 8300000, guid: d6815fbf97fe643cf8d7c32b4f491e21, type: 3}
   deathAudio: {fileID: 8300000, guid: 21cecbf38d57649409d43eeb874c929d, type: 3}
   hp: 1
@@ -258,6 +256,7 @@ MonoBehaviour:
   runTime: 2
   waitTime: 2
   vision: 0.8
+  speedIncrease: 1
 --- !u!135 &135407775558200882
 SphereCollider:
   m_ObjectHideFlags: 1

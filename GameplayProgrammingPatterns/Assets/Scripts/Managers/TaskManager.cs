@@ -7,12 +7,13 @@ public class TaskManager {
     private readonly List<Task> _tasks = new List<Task>();
 
     // Add a task
-    public void AddTask(Task task)
+    public Task Do(Task task)
     {
         Debug.Assert(task != null);
         Debug.Assert(!task.IsAttached);
         _tasks.Add(task);
         task.SetStatus(Task.TaskStatus.Pending);
+        return task;
     }
 
     public void Update()
@@ -47,7 +48,7 @@ public class TaskManager {
         // successful     
         if (task.NextTask != null && task.IsSuccessful)
         {
-            AddTask(task.NextTask);
+            Do(task.NextTask);
         }
         // clear the task from the manager and let it know     
         // it's no longer being managed     

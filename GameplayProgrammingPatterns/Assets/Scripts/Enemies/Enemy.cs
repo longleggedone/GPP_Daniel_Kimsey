@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour
     public int runTime = 1;
     public int waitTime = 1;
     public float vision = 0.8f;
-
+   
 
     protected virtual void Awake ()
     {
@@ -132,8 +132,14 @@ public abstract class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "projectile")
         {
+            Debug.Log("HIT");
             Hit();
         }
+    }
+
+    protected virtual void Shoot()
+    {
+        
     }
 
     protected virtual void Hit()
