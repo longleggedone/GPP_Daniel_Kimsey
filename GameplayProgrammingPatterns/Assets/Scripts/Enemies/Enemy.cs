@@ -56,16 +56,16 @@ public abstract class Enemy : MonoBehaviour
     {
         if (target != null)
         {
-            MoveForward();
+            MoveForward(moveSpeed);
 
             LookAt(target.position);
         }
     }
 
 
-    protected virtual void MoveForward()
+    protected virtual void MoveForward(float speed)
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
         //rb.MovePosition(Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime));
     }
 
@@ -81,6 +81,16 @@ public abstract class Enemy : MonoBehaviour
             
     }
 
+    protected virtual void LookAwayFrom(Vector3 lookTarget)
+    {
+        Vector3 lookPoint = new Vector3(lookTarget.x, transform.position.y, lookTarget.z);
+        Vector3 direction = transform.position - lookPoint;
+
+        Vector3 targetRotation = Vector3.RotateTowards(transform.forward, direction, rotateSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(targetRotation);
+    }
+
+
     protected IEnumerator MoveForwardForSeconds(float seconds)
     {
         if (target != null)
@@ -89,7 +99,7 @@ public abstract class Enemy : MonoBehaviour
             while (timer < seconds)
             {
                 // Debug.Log("Moving forward");
-                MoveForward();
+                MoveForward(moveSpeed);
                 timer += Time.deltaTime;
                 yield return null;
             }

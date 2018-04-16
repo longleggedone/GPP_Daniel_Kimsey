@@ -63,17 +63,31 @@ public static class Services
         }
     }
 
-    private static PrefabDB _prefabDB;
-    public static PrefabDB PrefabDB
+    private static PrefabDB _prefabs;
+    public static PrefabDB Prefabs
     {
         get
         {
-            Debug.Assert(_prefabDB != null);
-            return _prefabDB;
+            Debug.Assert(_prefabs != null);
+            return _prefabs;
         }
         set
         {
-            _prefabDB = value;
+            _prefabs = value;
+        }
+    }
+
+    private static SceneManager<TransitionData> _scenes;
+    public static SceneManager<TransitionData> Scenes
+    {
+        get
+        {
+            Debug.Assert(_scenes != null);
+            return _scenes;
+        }
+        set
+        {
+            _scenes = value;
         }
     }
 }

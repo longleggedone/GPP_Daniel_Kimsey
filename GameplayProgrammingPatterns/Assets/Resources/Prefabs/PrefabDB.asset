@@ -16,3 +16,8 @@ MonoBehaviour:
   chicken: {fileID: 1505755153879936, guid: 8741851a423de411c91c847451bb610b, type: 2}
   duck: {fileID: 1256590486650930, guid: 8fdfb3006c72c405a9e308606b44be00, type: 2}
   sheep: {fileID: 1128571309721214, guid: 609fe6977e43a4d7ba0e0c37e3f195c2, type: 2}
+  sheep2: {fileID: 1128571309721214, guid: 52556ff1cca294abd9eae4b675614d11, type: 2}
+  boss: {fileID: 1704727589675222, guid: 8c2d6e02306404c0899c6161a7d7ccaa, type: 2}
+  _levels:
+  - {fileID: 1863880288311508, guid: 44e513486571b4b76a1d6b9031ed44e3, type: 2}
+  - {fileID: 1344669847236004, guid: 7856f44820f77441da34ea99e46c1e9c, type: 2}

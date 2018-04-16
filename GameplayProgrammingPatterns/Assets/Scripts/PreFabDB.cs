@@ -21,5 +21,20 @@ public class PrefabDB : ScriptableObject
     [SerializeField]
     private GameObject sheep;
     public GameObject Sheep { get { return sheep; } }
+
+    [SerializeField]
+    private GameObject sheep2;
+    public GameObject Sheep2 { get { return sheep2; } }
+
+    [SerializeField]
+    private GameObject boss;
+    public GameObject Boss { get { return boss; } }
+
+    [SerializeField] private GameObject[] _levels;
+    public GameObject[] Levels
+    {
+        get { return _levels; }
+    }
+
 }
 
